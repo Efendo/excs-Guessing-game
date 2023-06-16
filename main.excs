@@ -1,0 +1,24 @@
+#include <time.h>
+
+int main() {
+    print "guess the number! you have 10 guesses! the number is between 0 and 25!\n";
+    int guess;
+    srand(time(NULL));
+    int number  = rand() % 25;
+    int guesses = 0;
+    bool hasWon = false;
+    while(!hasWon && guesses < 10) {
+        print "guess:";
+        input guess;
+        hasWon = (guess == number);
+        if (guess != number) {
+            print "wrong! " << 9 - guesses <<" guess[es] left!\n";
+            guesses += 1;
+        }
+    }
+    if(hasWon) {
+       print "congrats! you won!\n";
+    } else {
+            print "you ran out of guesses and lost! The answer was " << number << "!\n";
+    }
+}
